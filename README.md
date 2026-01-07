@@ -29,5 +29,5 @@ To use 524groupproject in your code:
 
 ## Copyright
 
-- Copyright © 2026 Sean Brown, Sam Lokanc, .
+- Copyright © 2026 Sean Brown, Sam Lokanc, Luis Alvarez, Rabin Duran.
 - Free software distributed under the [MIT License](./LICENSE).
