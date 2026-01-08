@@ -8,11 +8,9 @@
 *TODO: the above badges that indicate python version and package version will only work if your package is on PyPI.
 If you don't plan to publish to PyPI, you can remove them.*
 
-524GroupProject is a project called FileJanitor.
-
 ## Summary
 
-We develop a Python package for cleaning, standardizing, and organizing file names and folder structures.
+FileJanitor is a package that cleans, standardizes, and organizes file names and folder structures.
 
 ## Contributors
 
@@ -57,9 +55,9 @@ report.pdf → 2023-10-14_09-32-11_report.pdf
 
 ## Function 2: Pattern Replacement in File Names
 Replaces the input pattern in file names with a new pattern or character. This function will:
-•	Supports replacing characters or strings (_ -> &)
-•	Capitalizes the first word of the file name.
-•	Applies changes to all files in the folder.
+•	Support replacing characters or strings (_ -> &)
+•	Capitalize the first word of the file name.
+•	Apply changes to all files in the folder.
 
 ```bash
 file_janitors.txt → File & janitors.txt
