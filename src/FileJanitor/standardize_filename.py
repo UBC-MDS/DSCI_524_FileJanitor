@@ -1,7 +1,7 @@
 import os
 import re
 
-def standardize_filename(dir: str, case: str="lower", sep: str="_") -> bool:
+def standardize_filename(dir: str = None, case: str="lower", sep: str="_") -> bool:
     """
     Standardize filenames in a directory by normalizing case, separators,
     and duplicate punctuation.
@@ -41,6 +41,8 @@ def standardize_filename(dir: str, case: str="lower", sep: str="_") -> bool:
     Renames files like:
     "my__sample file--name.txt" -> "My-Sample-File-Name.txt"
     """
+    if dir is None:
+        dir = os.getcwd()
     if not os.path.isdir(dir):
         raise ValueError("Directory does not exist")
 
