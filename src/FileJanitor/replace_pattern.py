@@ -1,6 +1,6 @@
 import os
 
-def replace_pattern(dir: str, pattern: str, replacement: str) -> bool:
+def replace_pattern(pattern: str, replacement: str, dir: str | None = None) -> bool:
     """
     Replace specific patterns in filenames within a directory.
     
@@ -17,12 +17,13 @@ def replace_pattern(dir: str, pattern: str, replacement: str) -> bool:
     
     Parameters
     ----------
-    dir : str
-        Path to the directory containing files to be modified.
     pattern : str
         The substring or character pattern to search for in filenames.
     replacement : str
         The string or character to insert in place of the found pattern.
+    dir : str, optional
+        Path to the directory containing files to be modified.
+        If None, defaults to the current working directory.
     
     Returns
     -------
@@ -40,10 +41,13 @@ def replace_pattern(dir: str, pattern: str, replacement: str) -> bool:
 
     Examples
     --------
-    >>> replace_pattern("docs/", pattern="_", replacement=" & ")
+    >>> replace_pattern("_", " & ", "docs/")
     Renames files like:
     "file_janitors.txt" -> "file & janitors.txt"
     "report_v1_final.pdf" -> "report & v1 & final.pdf"
+    
+    >>> replace_pattern("_", " ")  # Uses current directory
+    Renames files in current working directory.
 
     Notes
     -----
@@ -53,9 +57,17 @@ def replace_pattern(dir: str, pattern: str, replacement: str) -> bool:
     - Files without the pattern in their name are left unchanged
     - Hidden files (starting with .) are processed unless explicitly excluded
     """
+    # Default to current working directory if not provided
+    if dir is None:
+        dir = os.getcwd()
+    
     # Check if directory exists
     if not os.path.isdir(dir):
         raise ValueError("Source directory does not exist.")
+    
+    # Handle empty pattern edge case
+    if pattern == "":
+        return False
     
     files_renamed = False
     

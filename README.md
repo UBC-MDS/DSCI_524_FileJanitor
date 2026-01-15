@@ -94,6 +94,21 @@ project_root/
 ├── file2
 ```
 
+## Testing
+
+To run the test suite, first install the package with test dependencies:
+
+```bash
+pip install -e .[tests]
+pytest
+```
+
+To run tests for a specific file:
+
+```bash
+pytest tests/unit/test_replace_pattern.py
+```
+
 ## Similar Packages
 
 FileJanitor is a high-level package built on top of libraries such as ```os```, ```pathlib```, and ```shutil```. While many Python libraries provide low-level tools for working with files, they do not offer built in functions for tasks such as standardizing file names, reordering files, and flattening directory structures. FileJanitor abstracts these low level capabilities into a simple Python Package that allows users to perform common cleanup tasks with ease.
