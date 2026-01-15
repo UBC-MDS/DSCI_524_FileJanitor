@@ -1,4 +1,6 @@
-def replace_pattern(dir: str, pattern: str, replacement: str) -> list[tuple]:
+import os
+
+def replace_pattern(dir: str, pattern: str, replacement: str) -> bool:
     """
     Replace specific patterns in filenames within a directory.
     
@@ -24,9 +26,8 @@ def replace_pattern(dir: str, pattern: str, replacement: str) -> list[tuple]:
     
     Returns
     -------
-    list of tuple(Path, Path)
-        A list of (old_path, new_path) pairs for each file that was renamed.
-        Files whose names were unchanged are not included.
+    bool
+        True if any files were renamed, False otherwise.
 
     Raises
     ------
@@ -52,4 +53,44 @@ def replace_pattern(dir: str, pattern: str, replacement: str) -> list[tuple]:
     - Files without the pattern in their name are left unchanged
     - Hidden files (starting with .) are processed unless explicitly excluded
     """
-    pass
+    # Check if directory exists
+    if not os.path.isdir(dir):
+        raise ValueError("Source directory does not exist.")
+    
+    files_renamed = False
+    
+    # Iterate through all files in the directory
+    for file in os.listdir(dir):
+        file_path = os.path.join(dir, file)
+        
+        # Skip if it's not a file (e.g., subdirectories)
+        if not os.path.isfile(file_path):
+            continue
+        
+        # Split filename into root and extension
+        base, ext = os.path.splitext(file)
+        
+        # Replace pattern in filename root only
+        new_base = base.replace(pattern, replacement)
+        
+        # Only rename if the filename actually changed
+        if new_base != base:
+            new_filename = new_base + ext
+            new_file_path = os.path.join(dir, new_filename)
+            
+            # Check that we are not renaming file onto itself
+            if os.path.abspath(file_path) == os.path.abspath(new_file_path):
+                continue
+            
+            # Check if target filename already exists
+            counter = 1
+            while os.path.exists(new_file_path):
+                new_filename = f"{new_base}_{counter}{ext}"
+                new_file_path = os.path.join(dir, new_filename)
+                counter += 1
+            
+            # Rename the file
+            os.rename(file_path, new_file_path)
+            files_renamed = True
+    
+    return files_renamed
