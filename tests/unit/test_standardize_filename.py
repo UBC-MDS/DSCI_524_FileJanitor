@@ -1,7 +1,7 @@
 import pytest
 import tempfile
 import os
-from FileJanitor.standarize_filename import standardize_filename
+from FileJanitor.standardize_filename import standardize_filename
 
 # test 1: test case conversion
 def test_case_conversion():
