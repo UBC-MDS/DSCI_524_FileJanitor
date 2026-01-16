@@ -2,7 +2,7 @@ import pytest
 import os
 from pathlib import Path
 import tempfile
-from filejanitor import index_files
+from FileJanitor.index_files import index_files
 
 #Create a temporary (and cleaned up) directory for testing
 @pytest.fixture
@@ -72,9 +72,10 @@ def test_duplicate_filenames(temp_dir):
 
 #Test 8: Handle edge cases
 #Test with empty directory should not raise an error
-order = ["nonexistent.txt", "another.txt"]
-result = index_files(temp_dir, order)
+def test_empty_directory(temp_dir):
+    order = ["nonexistent.txt", "another.txt"]
+    result = index_files(temp_dir, order)
 
-assert result == False
-assert len(list(Path(temp_dir).iterdir())) == 0
+    assert result == False
+    assert len(list(Path(temp_dir).iterdir())) == 0
 

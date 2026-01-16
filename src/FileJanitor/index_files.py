@@ -1,6 +1,6 @@
 import os
 
-def index_files(path: str, order: list[str], unlisted: str = "hide") -> bool:
+def index_files(dir: str, order: list[str], unlisted: str = "hide") -> bool:
     """
     Sort and order files in a directory by renaming them with numerical prefixes 
     or custom sequence identifiers according to a user-defined order.
@@ -123,7 +123,7 @@ def index_files(path: str, order: list[str], unlisted: str = "hide") -> bool:
     for f in order:
         if f in all_files:
             ordered_files.append(f)
-
+    
     unlisted_files = []
     for f in all_files:
         if f not in order:
@@ -134,7 +134,7 @@ def index_files(path: str, order: list[str], unlisted: str = "hide") -> bool:
     total_count = len(ordered_files)
     if unlisted == "keep":
         total_count += len(unlisted_files)
-    number_digits = len(str(total_count))
+    number_digits = max(2, len(str(total_count)))
 
     index = 1
     for filename in ordered_files:
@@ -153,27 +153,23 @@ def index_files(path: str, order: list[str], unlisted: str = "hide") -> bool:
             if not os.path.exists(unlisted_dir):
                 os.makedirs(unlisted_dir)
 
-        for filename in unlisted_files:
-            old_path = os.path.join(dir, filename)
-            new_path = os.path.join(unlisted_dir, filename)
-            os.rename(old_path, new_path)
-            files_processed = True
-    
-    elif unlisted == "keep":
-        for filename in unlisted_files:
-            old_path = os.path.join(dir, filename)
-            prefix = str(index).zfill(number_digits)
-            new_path = os.path.join(dir, f"{prefix}_{filename}")
-
-            if old_path != new_path:
+            for filename in unlisted_files:
+                old_path = os.path.join(dir, filename)
+                new_path = os.path.join(unlisted_dir, filename)
                 os.rename(old_path, new_path)
                 files_processed = True
+    
+        elif unlisted == "keep":
+            for filename in unlisted_files:
+                old_path = os.path.join(dir, filename)
+                prefix = str(index).zfill(number_digits)
+                new_path = os.path.join(dir, f"{prefix}_{filename}")
 
-            index +=1
+                if old_path != new_path:
+                    os.rename(old_path, new_path)
+                    files_processed = True
+
+                index +=1
 
     return files_processed
-    
-
-
-                     
     
