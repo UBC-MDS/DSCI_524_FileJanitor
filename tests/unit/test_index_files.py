@@ -71,5 +71,10 @@ def test_duplicate_filenames(temp_dir):
         index_files(temp_dir, ["file.txt", "other.txt", "file.txt"])
 
 #Test 8: Handle edge cases
+#Test with empty directory should not raise an error
+order = ["nonexistent.txt", "another.txt"]
+result = index_files(temp_dir, order)
 
+assert result == False
+assert len(list(Path(temp_dir).iterdir())) == 0
 
