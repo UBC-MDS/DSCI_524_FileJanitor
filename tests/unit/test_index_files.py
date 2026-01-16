@@ -47,15 +47,29 @@ def test_unlisted_keep(temp_dir):
     assert Path(temp_dir, "02_unlisted.txt").exists()
 
 #Test 4: FileNotFoundError when path does not exist
+def test_file_not_found_error():
     with pytest.raises(FileNotFoundError):
         index_files("/nonexistent/path", ["file.txt"])
 
 #Test 5: NotADirectoryError when path points to a file
+def test_not_a_directory_error(temp_dir):
     file_path = Path(temp_dir, "file.txt")
     file_path.touch()
-    
     with pytest.raises(NotADirectoryError):
         index_files(str(file_path), ["something.txt"])
 
 #Test 6: ValueError when order list is empty
+def test_empty_order_list(temp_dir):
+      with pytest.raises(ValueError):
+        index_files(temp_dir, [])
+
+#Test 7: ValueError when order contains duplicates
+def test_duplicate_filenames(temp_dir):
+    Path(temp_dir, "file.txt").touch()
+    
+    with pytest.raises(ValueError):
+        index_files(temp_dir, ["file.txt", "other.txt", "file.txt"])
+
+#Test 8: Handle edge cases
+
 
