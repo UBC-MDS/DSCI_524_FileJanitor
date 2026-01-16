@@ -1,4 +1,6 @@
-def index_files(path: str, order: list[str], unlisted: str = "hide"):
+import os
+
+def index_files(path: str, order: list[str], unlisted: str = "hide") -> bool:
     """
     Sort and order files in a directory by renaming them with numerical prefixes 
     or custom sequence identifiers according to a user-defined order.
@@ -89,3 +91,89 @@ def index_files(path: str, order: list[str], unlisted: str = "hide"):
     - Hidden files (starting with .) are ignored unless explicitly listed in `order`
 
        """
+# Check if the directory exists and if it is valid
+    if not os.path.exists(dir):
+        raise FileNotFoundError(f"The path {dir} does not exist.")
+
+    if not os.path.isdir(dir):
+        raise NotADirectoryError(f"The path {dir} is not a directory.")
+
+# Check if the list order is valid
+    if not order:
+        raise ValueError("The order list cannot be empty")
+
+    if len(order) != len(set(order)):
+        raise ValueError("The order list contains duplicate filenames")
+
+    if unlisted not in ["hide", "keep"]:
+        raise ValueError("The 'unlistd' parameter must be either 'hide' or 'keep'.")
+
+    files_processed = False
+
+# Obtain all the files in the directory (should ignore hidden files unless in order list)
+    all_files = []
+    for item in os.listdir(dir):
+        item_path = os.path.join(dir, item)
+        if os.path.isfile(item_path):
+            if not item.startswith('.') or item in order:
+                all_files.append(item)
+
+# Split the files into ordered and unlisted
+    ordered_files = []
+    for f in order:
+        if f in all_files:
+            ordered_files.append(f)
+
+    unlisted_files = []
+    for f in all_files:
+        if f not in order:
+            unlisted_files.append(f)
+
+
+# Calculate the total number of digits for indexing and rename ordered files
+    total_count = len(ordered_files)
+    if unlisted == "keep":
+        total_count += len(unlisted_files)
+    number_digits = len(str(total_count))
+
+    index = 1
+    for filename in ordered_files:
+        old_path = os.path.join(dir, filename)
+        prefix = str(index).zfill(number_digits)
+        new_path = os.path.join(dir, f"{prefix}_{filename}")
+
+        if old_path != new_path:
+            os.rename(old_path, new_path)
+            files_processed = True
+        index +=1
+
+    if unlisted_files:
+        if unlisted == "hide":
+            unlisted_dir = os.path.join(dir, "_unlisted")
+            if not os.path.exists(unlisted_dir):
+                os.makedirs(unlisted_dir)
+
+        for filename in unlisted_files:
+            old_path = os.path.join(dir, filename)
+            new_path = os.path.join(unlisted_dir, filename)
+            os.rename(old_path, new_path)
+            files_processed = True
+    
+    elif unlisted == "keep":
+        for filename in unlisted_files:
+            old_path = os.path.join(dir, filename)
+            prefix = str(index).zfill(number_digits)
+            new_path = os.path.join(dir, f"{prefix}_{filename}")
+
+            if old_path != new_path:
+                os.rename(old_path, new_path)
+                files_processed = True
+
+            index +=1
+
+    return files_processed
+    
+
+
+                     
+    
