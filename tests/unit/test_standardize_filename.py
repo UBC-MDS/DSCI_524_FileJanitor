@@ -3,7 +3,7 @@ import tempfile
 import os
 from FileJanitor.standardize_filename import standardize_filename
 
-# test 1: test case conversion
+# Test 1: test case conversion
 def test_case_conversion():
     original_files = [
         "this_is_a_test1.txt",
@@ -44,7 +44,7 @@ def test_case_conversion():
             for expected in expected_names:
                 assert os.path.exists(os.path.join(test_dir, expected))
 
-# test 2: test spacing conversion
+# Test 2: test spacing conversion
 def test_space_conversion():
     original_files = [
         "this_is_a_test1.txt",
@@ -85,7 +85,7 @@ def test_space_conversion():
             for expected in expected_names:
                 assert os.path.exists(os.path.join(test_dir, expected))
 
-# test 3: test remove duplicate punctuation
+# Test 3: test remove duplicate punctuation
 def test_remove_duplicate_punctuation():
     original_files = [
         "this__is--a  test1.txt",
@@ -105,7 +105,7 @@ def test_remove_duplicate_punctuation():
             standardize_filename(dir=test_dir, case="lower", sep="_")
 
 
-# test 4: test for value error if two files will have the same name when standardized
+# Test 4: test for value error if two files will have the same name when standardized
 def test_filename_collision():
     original_files = [
         "this_is_a_test.txt",
@@ -119,7 +119,27 @@ def test_filename_collision():
         with pytest.raises(ValueError):
             standardize_filename(dir=test_dir, case="lower", sep='_')
 
-# test 5: test for value error if provided directory does not exist
+# Test 5: test for value error if provided directory does not exist
 def test_directory_not_exist():
     with pytest.raises(ValueError):
         standardize_filename(dir="non_existent_dir", case="lower", sep='_')
+
+# Test 6: test for when files are already standardized (no changes needed)
+def test_already_standardized():
+    filenames = ["file_one.txt", "file_two.txt"]
+
+    with tempfile.TemporaryDirectory() as test_dir:
+        for name in filenames:
+            open(os.path.join(test_dir, name), "w").close()
+        result = standardize_filename(dir=test_dir, case="lower", sep="_")
+        
+        assert result is True
+        for name in filenames:
+            assert os.path.exists(os.path.join(test_dir, name))
+
+# Test 7: test empty directory returns True and does nothing
+def test_empty_directory():
+    with tempfile.TemporaryDirectory() as test_dir:
+        result = standardize_filename(dir=test_dir, case="lower", sep="_")
+        assert result is True
+        assert os.listdir(test_dir) == []
