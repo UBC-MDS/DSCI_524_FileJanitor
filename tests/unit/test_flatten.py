@@ -80,3 +80,11 @@ def test_flatten_no_files_to_move():
         os.makedirs(os.path.join(src, "sub"))
         result = flatten(src, tgt, recursive=False)
         assert result is False
+
+# Test when output directory does not exist
+def test_flatten_nonexistent_output():
+    with tempfile.TemporaryDirectory() as src:
+        create_test_dir(src)
+        nonexistent = os.path.join(src, "does_not_exist")
+        with pytest.raises(ValueError):
+            flatten(src, nonexistent, recursive=True)
