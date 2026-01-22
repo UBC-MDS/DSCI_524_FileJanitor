@@ -88,3 +88,9 @@ def test_flatten_nonexistent_output():
         nonexistent = os.path.join(src, "does_not_exist")
         with pytest.raises(ValueError):
             flatten(src, nonexistent, recursive=True)
+
+# Test flatten returns if source directory is empty
+def test_flatten_empty_source():
+    with tempfile.TemporaryDirectory() as src, tempfile.TemporaryDirectory() as tgt:
+        result = flatten(src, tgt, recursive=True)
+        assert result is False
