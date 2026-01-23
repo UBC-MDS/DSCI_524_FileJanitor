@@ -49,6 +49,7 @@ Download = "https://pypi.org/project/524groupproject/#files"
 dev = [
     "hatch",
     "pre-commit",
+    "ruff"
 ]
 
 docs = [
