@@ -155,7 +155,14 @@
     "href": "index.html#installation",
     "title": "FileJanitor",
     "section": "Installation",
-    "text": "Installation\npip install filejanitor"
+    "text": "Installation"
+  },
+  {
+    "objectID": "index.html#installation-1",
+    "href": "index.html#installation-1",
+    "title": "FileJanitor",
+    "section": "Installation",
+    "text": "Installation\nInstall FileJanitor from Test PyPI:\npip install -i https://test.pypi.org/simple/ filejanitor"
   },
   {
     "objectID": "index.html#quick-example",
@@ -304,14 +311,14 @@
     "href": "getting-started.html",
     "title": "Getting Started",
     "section": "",
-    "text": "Install FileJanitor using pip:\npip install filejanitor"
+    "text": "Install FileJanitor using pip:\npip install -i https://test.pypi.org/simple/ filejanitor"
   },
   {
     "objectID": "getting-started.html#installation",
     "href": "getting-started.html#installation",
     "title": "Getting Started",
     "section": "",
-    "text": "Install FileJanitor using pip:\npip install filejanitor"
+    "text": "Install FileJanitor using pip:\npip install -i https://test.pypi.org/simple/ filejanitor"
   },
   {
     "objectID": "getting-started.html#basic-usage",
