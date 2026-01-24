@@ -21,6 +21,8 @@ FileJanitor is a package that cleans, standardizes, and organizes file names and
 
 FileJanitor provides a set of utility functions to automate common-file system housekeeping tasks, such as renaming files, standardizing name conventions, ordering files, and restructuring directories. All functions operate on all files in a specialized folder unless specified.
 
+Check deployment at: https://test.pypi.org/project/FileJanitor/
+
 ## Features
 
 ### Function 1: Pattern Replacement in File Names
