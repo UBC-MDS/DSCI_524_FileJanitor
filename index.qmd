@@ -7,6 +7,11 @@ title: "FileJanitor"
 FileJanitor is a Python package for cleaning and organizing your file system. It provides simple functions to standardize filenames, flatten directory structures, replace patterns in filenames, and index files.
 
 ## Installation
+
+## Installation
+
+Install FileJanitor from [Test PyPI](https://test.pypi.org/project/filejanitor/):
+
 ```bash
 pip install -i https://test.pypi.org/simple/ filejanitor
 ```

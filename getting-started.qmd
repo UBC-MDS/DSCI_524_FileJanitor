@@ -6,7 +6,7 @@ title: "Getting Started"
 
 Install FileJanitor using pip:
 ```bash
-pip install filejanitor
+pip install -i https://test.pypi.org/simple/ filejanitor
 ```
 
 ## Basic Usage
