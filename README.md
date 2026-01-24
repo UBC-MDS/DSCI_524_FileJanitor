@@ -2,7 +2,7 @@
 
 |        |        |
 |--------|--------|
-| Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/524groupproject.svg)](https://pypi.org/project/524groupproject/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/524groupproject.svg)](https://pypi.org/project/524groupproject/)  |
+| CI/CD | [![Deploy to Test PyPI](https://github.com/UBC-MDS/DSCI_524_FileJanitor/actions/workflows/deploy.yml/badge.svg)](https://github.com/UBC-MDS/DSCI_524_FileJanitor/actions/workflows/deploy.yml) |
 | Meta   | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
 
 
