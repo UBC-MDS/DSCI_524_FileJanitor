@@ -30,3 +30,12 @@ docs/.quarto/
 docs/objects.json
 docs/reference/
 docs/index.md.old
+
+# Quarto output
+/docs/
+!docs/.gitignore
+/reference/
+/objects.json
+
+/.quarto/
+**/*.quarto_ipynb
