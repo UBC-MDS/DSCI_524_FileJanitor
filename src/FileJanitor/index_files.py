@@ -12,7 +12,7 @@ def index_files(dir: str, order: list[str], unlisted: str = "hide") -> bool:
     
     Parameters
     ----------
-    path : str
+    dir : str
         Path to the target directory containing the files that need to be indexed.
         Can be absolute or relative path.
     order : list[str]

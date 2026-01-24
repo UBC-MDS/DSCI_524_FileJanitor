@@ -1,0 +1,36 @@
+---
+title: "Usage Examples"
+---
+
+## Standardize Filenames
+```python
+from FileJanitor import standardize_filename
+
+# Example: Clean up a messy filename
+result = standardize_filename("My Document (1).pdf", case="lower")
+print(result)
+```
+
+## Flatten Directory Structure
+```python
+from FileJanitor import flatten
+
+# Example: Flatten nested directories
+flatten("/path/to/nested/folders", "/path/to/output")
+```
+
+## Replace Patterns in Filenames
+```python
+from FileJanitor import replace_pattern
+
+# Example: Replace spaces with underscores
+replace_pattern("/path/to/files", " ", "_")
+```
+
+## Index Files
+```python
+from FileJanitor import index_files
+
+# Example: Create a file index
+index_files("/path/to/directory")
+```

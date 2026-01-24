@@ -1,0 +1,30 @@
+---
+title: "FileJanitor"
+---
+
+## Overview
+
+FileJanitor is a Python package for cleaning and organizing your file system. It provides simple functions to standardize filenames, flatten directory structures, replace patterns in filenames, and index files.
+
+## Installation
+```bash
+pip install filejanitor
+```
+
+## Quick Example
+```python
+from FileJanitor import standardize_filename
+
+# Standardize a messy filename
+standardize_filename("My Document (1).pdf", case="lower")
+# Returns: "my_document_1.pdf"
+```
+
+## Features
+
+- **Flatten directories**: Bring all nested files to a single level
+- **Standardize filenames**: Clean and normalize filename formats
+- **Replace patterns**: Bulk rename files with pattern matching
+- **Index files**: Create organized file listings
+
+See the [Examples](examples.qmd) page for detailed usage.
