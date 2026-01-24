@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+*.egg-info/
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Quarto
+docs/_site/
+docs/.quarto/
+
+# Quartodoc generated files
+docs/objects.json
+docs/reference/
+docs/index.md.old
+
+# Quarto output
+/docs/
+!docs/.gitignore
+/reference/
+/objects.json
+
+/.quarto/
+**/*.quarto_ipynb

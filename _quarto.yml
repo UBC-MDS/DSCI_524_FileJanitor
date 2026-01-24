@@ -1,0 +1,41 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "FileJanitor Documentation"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Getting Started"
+        href: getting-started.qmd
+      - text: "Examples"
+        href: examples.qmd
+      - text: "Function Reference"
+        href: reference/index.qmd
+    right:
+      - icon: github
+        href: https://github.com/SeanBrown12345/GroupProject524
+
+metadata-files:
+  - reference/_sidebar.yml
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-copy: true
+
+quartodoc:
+  package: FileJanitor
+  dir: reference
+  sidebar: reference/_sidebar.yml
+  sections:
+    - title: "File Organization Functions"
+      desc: "Package for cleaning and organizing files"
+      contents:
+        - flatten
+        - index_files
+        - replace_pattern
+        - standardize_filename

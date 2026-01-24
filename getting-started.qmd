@@ -1,0 +1,31 @@
+---
+title: "Getting Started"
+---
+
+## Installation
+
+Install FileJanitor using pip:
+```bash
+pip install filejanitor
+```
+
+## Basic Usage
+
+Import the functions you need:
+```python
+from FileJanitor import (
+    flatten,
+    index_files,
+    replace_pattern,
+    standardize_filename
+)
+```
+
+## Your First Cleanup
+```python
+# Standardize a filename
+clean_name = standardize_filename("messy file name.txt", case="lower")
+print(clean_name)  # Output: messy_file_name.txt
+```
+
+See the [Examples](examples.qmd) page for more detailed usage patterns.
