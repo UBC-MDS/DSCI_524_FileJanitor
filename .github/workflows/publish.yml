@@ -1,8 +1,12 @@
 name: docs-publish
 on:
-  pull_request:
+  push:
     branches: [ main ]
   workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   build-docs:
     runs-on: ubuntu-latest
