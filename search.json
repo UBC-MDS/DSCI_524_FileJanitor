@@ -155,13 +155,6 @@
     "href": "index.html#installation",
     "title": "FileJanitor",
     "section": "Installation",
-    "text": "Installation"
-  },
-  {
-    "objectID": "index.html#installation-1",
-    "href": "index.html#installation-1",
-    "title": "FileJanitor",
-    "section": "Installation",
     "text": "Installation\nInstall FileJanitor from Test PyPI:\npip install -i https://test.pypi.org/simple/ filejanitor"
   },
   {
