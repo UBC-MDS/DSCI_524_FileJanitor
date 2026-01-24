@@ -20,7 +20,7 @@ def create_test_dir(base_dir):
             fp.write("test")
     return files
 
-# Test a non recursive flatten
+# Test 1: non recursive flatten
 def test_flatten_top_level_only():
     with tempfile.TemporaryDirectory() as src, tempfile.TemporaryDirectory() as tgt:
         create_test_dir(src)
@@ -33,7 +33,7 @@ def test_flatten_top_level_only():
         assert os.path.exists(os.path.join(src, "sub1", "subsub1", "file3.txt"))
         assert os.path.exists(os.path.join(src, "sub2", "file4.txt"))
 
-# Test for a recursive flatten, also test naming conflict resolution
+# Test 2: a recursive flatten, also test naming conflict resolution
 def test_flatten_recursive():
     with tempfile.TemporaryDirectory() as src, tempfile.TemporaryDirectory() as tgt:
         files = create_test_dir(src)
@@ -49,7 +49,7 @@ def test_flatten_recursive():
         # Check for renamed file due to naming conflict
         assert "file1_1.txt" in tgt_files
 
-# Test flatten with default output directory (current working directory)
+# Test 3:flatten with default output directory (current working directory)
 def test_flatten_default_target_dir(monkeypatch):
     with tempfile.TemporaryDirectory() as src:
         create_test_dir(src)
@@ -69,14 +69,28 @@ def test_flatten_default_target_dir(monkeypatch):
         monkeypatch.chdir(old_cwd)
         shutil.rmtree(cwd)
 
-# Test for when source directory does not exist
+# Test 4: when source directory does not exist
 def test_flatten_nonexistent_source():
     with pytest.raises(ValueError):
         flatten("nonexistent_dir", recursive=True)
 
-# Test flatten when no movable files exist
+# Test 5: when no movable files exist
 def test_flatten_no_files_to_move():
     with tempfile.TemporaryDirectory() as src, tempfile.TemporaryDirectory() as tgt:
         os.makedirs(os.path.join(src, "sub"))
         result = flatten(src, tgt, recursive=False)
+        assert result is False
+
+# Test 6: when output directory does not exist
+def test_flatten_nonexistent_output():
+    with tempfile.TemporaryDirectory() as src:
+        create_test_dir(src)
+        nonexistent = os.path.join(src, "does_not_exist")
+        with pytest.raises(ValueError):
+            flatten(src, nonexistent, recursive=True)
+
+# Test 7: when source directory is valid but empty
+def test_flatten_empty_source():
+    with tempfile.TemporaryDirectory() as src, tempfile.TemporaryDirectory() as tgt:
+        result = flatten(src, tgt, recursive=True)
         assert result is False
