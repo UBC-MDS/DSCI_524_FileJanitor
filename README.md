@@ -2,7 +2,7 @@
 
 |        |        |
 |--------|--------|
-| Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/filejanitor.svg)](https://pypi.org/project/filejanitor/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/filejanitor.svg)](https://pypi.org/project/filejanitor/)  |
+| Package | [![Latest Test PyPI Version](https://img.shields.io/testpypi/v/filejanitor.svg)](https://test.pypi.org/project/filejanitor/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/filejanitor.svg)](https://test.pypi.org/project/filejanitor/)  |
 | CI/CD | [![Deploy to Test PyPI](https://github.com/UBC-MDS/DSCI_524_FileJanitor/actions/workflows/deploy.yml/badge.svg)](https://github.com/UBC-MDS/DSCI_524_FileJanitor/actions/workflows/deploy.yml) |
 | Meta   | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
 
