@@ -8,8 +8,6 @@ FileJanitor is a Python package for cleaning and organizing your file system. It
 
 ## Installation
 
-## Installation
-
 Install FileJanitor from [Test PyPI](https://test.pypi.org/project/filejanitor/):
 
 ```bash
