@@ -109,6 +109,51 @@ To run tests for a specific file:
 pytest tests/unit/test_replace_pattern.py
 ```
 
+## Documentation
+
+**Full documentation is available at:** https://ubc-mds.github.io/DSCI_524_FileJanitor/
+
+The documentation includes:
+- [Getting Started Guide](https://ubc-mds.github.io/DSCI_524_FileJanitor/getting-started.html)
+- [Usage Examples](https://ubc-mds.github.io/DSCI_524_FileJanitor/examples.html)
+- [Function Reference](https://ubc-mds.github.io/DSCI_524_FileJanitor/reference/) 
+
+## Development Setup
+
+### Installation for Development
+```bash
+# Clone the repository
+git clone https://github.com/UBC-MDS/DSCI_524_FileJanitor.git
+cd DSCI_524_FileJanitor
+
+# Install in editable mode with all dependencies
+pip install -e ".[dev,docs,tests]"
+```
+
+### Building Documentation Locally
+```bash
+# Install documentation dependencies
+pip install -e ".[docs]"
+
+# Build the reference documentation
+quartodoc build
+
+# Preview documentation in your browser
+quarto preview
+```
+
+### Deploying Documentation
+
+Documentation is **automatically deployed** to GitHub Pages when changes are merged to the `main` branch.
+
+**Deployment workflow:**
+1. The team member creates a pull request (PR) with documentation changes
+2. The PR gets reviewed and approved by a team member
+3. The PR is merged to `main`
+4. GitHub Actions runs `.github/workflows/publish.yml`
+5. The documentation is built and deployed to the `gh-pages` branch
+6. The changes are at https://ubc-mds.github.io/DSCI_524_FileJanitor/
+
 ## Similar Packages
 
 FileJanitor is a high-level package built on top of libraries such as ```os```, ```pathlib```, and ```shutil```. While many Python libraries provide low-level tools for working with files, they do not offer built in functions for tasks such as standardizing file names, reordering files, and flattening directory structures. FileJanitor abstracts these low level capabilities into a simple Python Package that allows users to perform common cleanup tasks with ease.
