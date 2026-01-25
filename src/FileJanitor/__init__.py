@@ -1,29 +1,16 @@
-# MIT License
-#
-# Copyright (c) 2026 Sean Brown, Sam Lokanc, 
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice (including the next
-# paragraph) shall be included in all copies or substantial portions of the
-# Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+"""
+FileJanitor: A Python package for cleaning and organizing file systems.
 
 """
-Add a docstring here for the init module.
 
-This might include a very brief description of the package,
-its purpose, and any important notes.
-"""
+from FileJanitor.standardize_filename import standardize_filename
+from FileJanitor.flatten import flatten
+from FileJanitor.replace_pattern import replace_pattern
+from FileJanitor.index_files import index_files
+
+__all__ = [
+    "standardize_filename",
+    "flatten",
+    "replace_pattern",
+    "index_files",
+]
