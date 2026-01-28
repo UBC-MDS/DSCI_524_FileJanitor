@@ -10,18 +10,19 @@
 
 FileJanitor is a package that cleans, standardizes, and organizes file names and folder structures.
 
-## Contributors
-
-* **Sean Brown** ([@SeanBrown12345](https://github.com/SeanBrown12345))
-* **Sam Lokanc** ([@SamLokanc](https://github.com/SamLokanc))
-* **Rabin Duran** ([@rabin0208](https://github.com/rabin0208))
-* **Luis Alonso Alvarez** ([@luisalonso8](https://github.com/luisalonso8))
-
 ## Overview usage
 
 FileJanitor provides a set of utility functions to automate common-file system housekeeping tasks, such as renaming files, standardizing name conventions, ordering files, and restructuring directories. All functions operate on all files in a specialized folder unless specified.
 
 Check deployment at: https://test.pypi.org/project/FileJanitor/
+
+## Installation
+
+### From PyPI (recommended)
+Run in your terminal to install FileJanitor package:
+```bash
+pip install -i https://test.pypi.org/simple/ travelpy
+```
 
 ## Features
 
@@ -159,6 +160,13 @@ Documentation is **automatically deployed** to GitHub Pages when changes are mer
 ## Similar Packages
 
 FileJanitor is a high-level package built on top of libraries such as ```os```, ```pathlib```, and ```shutil```. While many Python libraries provide low-level tools for working with files, they do not offer built in functions for tasks such as standardizing file names, reordering files, and flattening directory structures. FileJanitor abstracts these low level capabilities into a simple Python Package that allows users to perform common cleanup tasks with ease.
+
+## Contributors
+
+* **Sean Brown** ([@SeanBrown12345](https://github.com/SeanBrown12345))
+* **Sam Lokanc** ([@SamLokanc](https://github.com/SamLokanc))
+* **Rabin Duran** ([@rabin0208](https://github.com/rabin0208))
+* **Luis Alonso Alvarez** ([@luisalonso8](https://github.com/luisalonso8))
 
 ## Copyright
 
