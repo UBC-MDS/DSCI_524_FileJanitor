@@ -1,7 +1,6 @@
 ---
 title: "Usage Examples"
 ---
-# Usage Examples
 
 ## replace_pattern
 ```python
