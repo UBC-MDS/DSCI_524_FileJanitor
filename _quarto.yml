@@ -2,6 +2,10 @@ project:
   type: website
   output-dir: docs
 
+execute:
+  enabled: true
+  freeze: auto
+
 website:
   title: "FileJanitor Documentation"
   navbar:
@@ -28,7 +32,7 @@ format:
     code-copy: true
 
 quartodoc:
-  package: FileJanitor
+  package: filejanitor
   dir: reference
   sidebar: reference/_sidebar.yml
   sections:
