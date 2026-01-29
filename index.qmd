@@ -18,7 +18,7 @@ pip install -i https://test.pypi.org/simple/ filejanitor
 ```{python}
 from pathlib import Path
 import tempfile
-from filejanitor import standardize_filename
+from FileJanitor import standardize_filename
 
 # Create a temporary directory with messy filenames
 with tempfile.TemporaryDirectory() as tmp:
