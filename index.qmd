@@ -26,8 +26,8 @@ with tempfile.TemporaryDirectory() as tmp:
 
     # Create example files
     (tmp_path / "My Document (1).pdf").write_text("dummy")
-    (tmp_path / "Final--Report__2024.txt").write_text("dummy")
-    (tmp_path / "   messy   name---file.csv").write_text("dummy")
+    (tmp_path / "Final-Report_2024.txt").write_text("dummy")
+    (tmp_path / "messy name-file.csv").write_text("dummy")
 
     print("Before:")
     for f in sorted(tmp_path.iterdir()):
