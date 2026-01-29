@@ -2,6 +2,10 @@ project:
   type: website
   output-dir: docs
 
+execute:
+  enabled: true
+  freeze: auto
+
 website:
   title: "FileJanitor Documentation"
   navbar:
