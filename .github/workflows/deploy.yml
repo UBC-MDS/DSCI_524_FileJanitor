@@ -2,8 +2,8 @@ name: deploy-test-pypi
 
 on:
   push:
-    branches: [main]
-  
+    tags:
+      - "v*"  # Triggers only when you push a tag like v0.1.0
   workflow_dispatch:
 
 jobs:
@@ -12,10 +12,12 @@ jobs:
 
     steps:
       - name: Check-out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # CRITICAL: Required for Hatch to see the tag!
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.13'
 
@@ -26,7 +28,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          pytest --cov --cov-report=term --cov-branch
+          pytest --cov --cov-report=xml --cov-branch
 
       - name: Run ruff formatter
         run: |
@@ -34,16 +36,23 @@ jobs:
           ruff check src/
         continue-on-error: true
 
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
   build-deploy:
     needs: unit-test-pytest
     runs-on: ubuntu-latest
     
     steps:
       - name: Check-out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # CRITICAL: Required for Hatch to see the tag!
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.13'
 
@@ -58,5 +67,7 @@ jobs:
       - name: Publish to Test PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          repository-url: https://test.pypi.org/legacy/
+          user: __token__
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          repository-url: https://test.pypi.org/legacy/
+          verbose: true

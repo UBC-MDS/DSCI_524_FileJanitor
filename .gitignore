@@ -11,6 +11,9 @@ venv/
 dist/
 build/
 
+# Auto-generated version file
+src/FileJanitor/__version__.py
+
 # IDEs
 .vscode/
 .idea/
