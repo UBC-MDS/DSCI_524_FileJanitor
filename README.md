@@ -5,6 +5,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![PyPI](https://img.shields.io/pypi/v/FileJanitor?pypiBaseUrl=https%3A%2F%2Ftest.pypi.org)](https://test.pypi.org/project/FileJanitor/)
 [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+[![codecov](https://codecov.io/gh/UBC-MDS/DSCI_524_FileJanitor/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/DSCI_524_FileJanitor)
 
 ## Summary
 
