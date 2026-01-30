@@ -3,8 +3,11 @@ import tempfile
 import os
 from FileJanitor.standardize_filename import standardize_filename
 
-# Test 1: test case conversion
 def test_case_conversion():
+    """
+    Test 1: test case conversion
+    """
+
     original_files = [
         "this_is_a_test1.txt",
         "THIS_IS_A_TEST2.txt",
@@ -44,8 +47,11 @@ def test_case_conversion():
             for expected in expected_names:
                 assert os.path.exists(os.path.join(test_dir, expected))
 
-# Test 2: test spacing conversion
 def test_space_conversion():
+    """
+    Test 2: test spacing conversion
+    """
+
     original_files = [
         "this_is_a_test1.txt",
         "this is a test2.txt",
@@ -85,8 +91,11 @@ def test_space_conversion():
             for expected in expected_names:
                 assert os.path.exists(os.path.join(test_dir, expected))
 
-# Test 3: test remove duplicate punctuation
 def test_remove_duplicate_punctuation():
+    """
+    Test 3: test remove duplicate punctuation
+    """
+
     original_files = [
         "this__is--a  test1.txt",
         "this___is---a__test2.txt",
@@ -105,8 +114,11 @@ def test_remove_duplicate_punctuation():
             standardize_filename(dir=test_dir, case="lower", sep="_")
 
 
-# Test 4: test for value error if two files will have the same name when standardized
 def test_filename_collision():
+    """
+    Test 4: test for value error if two files will have the same name when standardized
+    """
+
     original_files = [
         "this_is_a_test.txt",
         "this-is-a-test.txt",
@@ -119,13 +131,19 @@ def test_filename_collision():
         with pytest.raises(ValueError):
             standardize_filename(dir=test_dir, case="lower", sep='_')
 
-# Test 5: test for value error if provided directory does not exist
 def test_directory_not_exist():
+    """
+    Test 5: test for value error if provided directory does not exist
+    """
+
     with pytest.raises(ValueError):
         standardize_filename(dir="non_existent_dir", case="lower", sep='_')
 
-# Test 6: test for when files are already standardized (no changes needed)
 def test_already_standardized():
+    """
+    Test 6: test for when files are already standardized (no changes needed)
+    """
+
     filenames = ["file_one.txt", "file_two.txt"]
 
     with tempfile.TemporaryDirectory() as test_dir:
@@ -137,8 +155,11 @@ def test_already_standardized():
         for name in filenames:
             assert os.path.exists(os.path.join(test_dir, name))
 
-# Test 7: test empty directory returns True and does nothing
 def test_empty_directory():
+    """
+    Test 7: test empty directory returns True and does nothing
+    """
+
     with tempfile.TemporaryDirectory() as test_dir:
         result = standardize_filename(dir=test_dir, case="lower", sep="_")
         assert result is True

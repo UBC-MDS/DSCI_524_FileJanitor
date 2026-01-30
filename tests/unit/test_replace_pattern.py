@@ -3,8 +3,11 @@ import tempfile
 from FileJanitor.replace_pattern import replace_pattern
 import pytest
 
-# Create a test directory structure with files
 def create_test_dir(base_dir):
+    """
+    Create a test directory structure with files
+    """
+
     os.makedirs(os.path.join(base_dir, "sub1", "subsub1"))
     os.makedirs(os.path.join(base_dir, "sub2"))
     files = [
@@ -19,8 +22,11 @@ def create_test_dir(base_dir):
             fp.write("test")
     return files
 
-# Test 1: Basic pattern replacement functionality
 def test_replace_pattern_basic():
+    """
+    Test 1: Basic pattern replacement functionality
+    """
+
     with tempfile.TemporaryDirectory() as test_dir:
         # Create files with underscores in top-level directory
         with open(os.path.join(test_dir, "file_test.txt"), "w") as fp:
@@ -34,8 +40,11 @@ def test_replace_pattern_basic():
         assert os.path.exists(os.path.join(test_dir, "file & test.txt"))
         assert os.path.exists(os.path.join(test_dir, "report & v1 & final.pdf"))
 
-# Test 2: Naming conflict resolution and extension preservation
 def test_replace_pattern_naming_conflict_and_extension():
+    """
+    Test 2: Naming conflict resolution and extension preservation
+    """
+
     with tempfile.TemporaryDirectory() as test_dir:
         # Create files that will cause naming conflict
         with open(os.path.join(test_dir, "file_test.txt"), "w") as fp:
@@ -55,8 +64,11 @@ def test_replace_pattern_naming_conflict_and_extension():
         # Extension preserved: file.name.txt has no underscore so unchanged
         assert "file.name.txt" in tgt_files
 
-# Test 3: No matches and subdirectories are skipped
 def test_replace_pattern_no_matches_and_subdirectories():
+    """
+    Test 3: No matches and subdirectories are skipped
+    """
+
     with tempfile.TemporaryDirectory() as test_dir:
         create_test_dir(test_dir)
         
@@ -69,13 +81,19 @@ def test_replace_pattern_no_matches_and_subdirectories():
         assert os.path.exists(os.path.join(test_dir, "sub1", "file2.txt"))
         assert os.path.exists(os.path.join(test_dir, "sub1", "subsub1", "file3.txt"))
 
-# Test 4: Error handling: nonexistent directory
 def test_replace_pattern_nonexistent_dir():
+    """
+    # Test 4: Error handling: nonexistent directory
+    """
+    
     with pytest.raises(ValueError):
         replace_pattern("_", " ", "nonexistent_dir")
 
-# Test 5: Edge cases: empty pattern and empty directory
 def test_replace_pattern_edge_cases():
+    """
+    Test 5: Edge cases: empty pattern and empty directory
+    """
+
     with tempfile.TemporaryDirectory() as test_dir:
         # Test empty pattern
         with open(os.path.join(test_dir, "test_file.txt"), "w") as fp:
