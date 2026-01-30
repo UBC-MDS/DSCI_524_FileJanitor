@@ -14,7 +14,20 @@ Install FileJanitor from [Test PyPI](https://test.pypi.org/project/filejanitor/)
 pip install -i https://test.pypi.org/simple/ filejanitor
 ```
 
-## Executable Example
+## Functions
+
+- **Flatten directories** - Bring all nested files to a single level
+- **Standardize filenames** - Clean and normalize filename formats
+- **Replace patterns** - Bulk rename files with pattern matching
+- **Index files** - Create organized file listings
+
+See the [Examples](examples.qmd) page and below for detailed usage.
+
+See the [Function References](reference/index.qmd) page for complete API reference.
+
+
+## Executable Examples
+### standardize_filename
 ```{python}
 from pathlib import Path
 import tempfile
@@ -41,16 +54,104 @@ with tempfile.TemporaryDirectory() as tmp:
         print(" -", f.name)
 ```
 
-## Functions
+### replace_pattern
+```{python}
+from pathlib import Path
+import tempfile
+from FileJanitor import replace_pattern 
 
-- **Flatten directories** - Bring all nested files to a single level
-- **Standardize filenames** - Clean and normalize filename formats
-- **Replace patterns** - Bulk rename files with pattern matching
-- **Index files** - Create organized file listings
+# Create a temporary directory with example files
+with tempfile.TemporaryDirectory() as tmp:
+    tmp_path = Path(tmp)
 
-See the [Examples](examples.qmd) page for detailed usage.
+    # Create sample files
+    (tmp_path / "file_janitors.txt").write_text("dummy")
+    (tmp_path / "report_v1_final.pdf").write_text("dummy")
+    (tmp_path / "notes.txt").write_text("dummy")  
 
-See the [Function References](reference/index.qmd) page for complete API reference.
+    print("Before:")
+    for f in sorted(tmp_path.iterdir()):
+        print(" -", f.name)
+
+    # Replace "_" with " & " in filenames
+    replace_pattern("_", " & ", dir=tmp_path)
+
+    print("\nAfter:")
+    for f in sorted(tmp_path.iterdir()):
+        print(" -", f.name)
+
+```
+
+### flatten
+```{python}
+from pathlib import Path
+import tempfile
+from FileJanitor import flatten
+
+# Create a temporary nested directory structure
+with tempfile.TemporaryDirectory() as tmp:
+    tmp_path = Path(tmp)
+
+    nested = tmp_path / "project"
+    nested.mkdir()
+
+    subfolder = nested / "data"
+    subfolder.mkdir()
+
+    # Create files at different levels
+    (nested / "top_level.txt").write_text("dummy")
+    (subfolder / "nested_file.csv").write_text("dummy")
+
+    print("Before flatten:")
+    for path in nested.rglob("*"):
+        print(" -", path.relative_to(tmp_path))
+
+    # Flatten all files into the root temp directory (recursive)
+    flatten(nested_directory=nested, output_directory=tmp_path, recursive=True)
+
+    print("\nAfter flatten:")
+    for path in tmp_path.iterdir():
+        print(" -", path.name)
+```
+
+### index_files
+
+```{python}
+from pathlib import Path
+import tempfile
+from FileJanitor import index_files 
+
+# Create a temporary directory with example files
+with tempfile.TemporaryDirectory() as tmp:
+    tmp_path = Path(tmp)
+
+    # Create sample files
+    (tmp_path / "discussion.pdf").write_text("dummy")
+    (tmp_path / "intro.pdf").write_text("dummy")
+    (tmp_path / "conclusions.pdf").write_text("dummy")
+    (tmp_path / "analysis.pdf").write_text("dummy")
+
+    print("Before indexing:")
+    for f in sorted(tmp_path.iterdir()):
+        print(" -", f.name)
+
+    # Define desired order
+    order = [
+        "intro.pdf",
+        "analysis.pdf",
+        "discussion.pdf",
+        "conclusions.pdf",
+    ]
+
+    # Index files
+    index_files(dir=tmp_path, order=order, unlisted="hide")
+
+    print("\nAfter indexing:")
+    for f in sorted(tmp_path.iterdir()):
+        print(" -", f.name)
+
+```
+
 
 ## Contributors
 
