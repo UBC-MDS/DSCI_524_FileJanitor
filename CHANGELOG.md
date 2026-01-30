@@ -2,13 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
-- Upcoming features and fixes
-
-## [0.1.0] - (1979-01-01)
-
+## [0.1.0] - (2026-01-28)
 - First release
+- Functions implemented:
+  - flatten
+  - index_files
+  - replace_pattern
+  - standardize_filenames
+- CI/CD pipeline set up
+- Documentation created with Usage
+
+## Milestone 4 Peer Review Changes (2026-02-02)
+- Added badge for Python Version [Pull Request #45](https://github.com/UBC-MDS/DSCI_524_FileJanitor/pull/45)
+- Updated installation instructions in README based on Peer Suggestion [Pull Request #45](https://github.com/UBC-MDS/DSCI_524_FileJanitor/pull/45)
+- Updated test instructions in README based on Peer Suggestion [Pull Request #45](https://github.com/UBC-MDS/DSCI_524_FileJanitor/pull/45)
