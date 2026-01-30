@@ -60,21 +60,21 @@
     "href": "examples.html",
     "title": "Usage Examples",
     "section": "",
-    "text": "from FileJanitor import replace_pattern\n\nreplace_pattern(\"_\", \" & \", \"docs/\") # Renames files like: \"file_janitors.txt\" -&gt; \"file & janitors.txt\"\nreplace_pattern(\"_\", \" \")  # Uses current directory, renames files like: \"my_file.txt\" -&gt; \"my file.txt\""
+    "text": "from FileJanitor import replace_pattern\n\nreplace_pattern(\"_\", \" & \", \"docs/\") # Renames files like: \"file_janitors.txt\" -&gt; \"file & janitors.txt\"\nreplace_pattern(\"_\", \" \")  # Uses current directory, renames files like: \"my_file.txt\" -&gt; \"my file.txt\"\nBefore:\ndocs/\n├── file_janitors.txt\n├── report_v1_final.pdf\n└── my_file.txt\nAfter:\ndocs/\n├── file & janitors.txt\n├── report & v1 & final.pdf\n└── my & file.txt"
   },
   {
     "objectID": "examples.html#replace_pattern",
     "href": "examples.html#replace_pattern",
     "title": "Usage Examples",
     "section": "",
-    "text": "from FileJanitor import replace_pattern\n\nreplace_pattern(\"_\", \" & \", \"docs/\") # Renames files like: \"file_janitors.txt\" -&gt; \"file & janitors.txt\"\nreplace_pattern(\"_\", \" \")  # Uses current directory, renames files like: \"my_file.txt\" -&gt; \"my file.txt\""
+    "text": "from FileJanitor import replace_pattern\n\nreplace_pattern(\"_\", \" & \", \"docs/\") # Renames files like: \"file_janitors.txt\" -&gt; \"file & janitors.txt\"\nreplace_pattern(\"_\", \" \")  # Uses current directory, renames files like: \"my_file.txt\" -&gt; \"my file.txt\"\nBefore:\ndocs/\n├── file_janitors.txt\n├── report_v1_final.pdf\n└── my_file.txt\nAfter:\ndocs/\n├── file & janitors.txt\n├── report & v1 & final.pdf\n└── my & file.txt"
   },
   {
     "objectID": "examples.html#standardize_filename",
     "href": "examples.html#standardize_filename",
     "title": "Usage Examples",
     "section": "standardize_filename",
-    "text": "standardize_filename\nfrom FileJanitor import standardize_filename\n\nstandardize_filename(\"data/\", case=\"title\", sep=\"-\") # Renames files in data/ like: \"my file NAME.txt\" -&gt; \"My-File-Name.txt\""
+    "text": "standardize_filename\nfrom FileJanitor import standardize_filename\n\nstandardize_filename(\"data/\", case=\"title\", sep=\"-\") # Renames files in data/ like: \"my file NAME.txt\" -&gt; \"My-File-Name.txt\"\nBefore:\ndata/\n├── my file NAME.txt\n├── Another_Report.csv\n└── messy  name--file.pdf\nAfter:\ndata/\n├── My-File-Name.txt\n├── Another-Report.csv\n└── Messy-Name-File.pdf"
   },
   {
     "objectID": "examples.html#index_files",
@@ -88,7 +88,7 @@
     "href": "examples.html#flatten",
     "title": "Usage Examples",
     "section": "flatten",
-    "text": "flatten\nfrom FileJanitor import flatten\n\nflatten(\"data/\", recursive=True)\nBefore:\ncwd/\n├── data/\n│   ├── raw/\n│   │   └── file1.csv\n│   └── processed/\n│       └── file2.csv\nAfter:\ncwd/\n├── file1.csv\n├── file2"
+    "text": "flatten\nfrom FileJanitor import flatten\n\nflatten(\"data/\", recursive=True)\nBefore:\ncwd/\n├── data/\n│   ├── raw/\n│   │   └── file1.csv\n│   └── processed/\n│       └── file2.csv\nAfter:\ncwd/\n├── file1.csv\n├── file2.csv"
   },
   {
     "objectID": "reference/index_files.html",
@@ -204,21 +204,21 @@
     "href": "CHANGELOG.html",
     "title": "Changelog",
     "section": "",
-    "text": "All notable changes to this project will be documented in this file.\n\n\n\nFirst release\nFunctions implemented:\n\nflatten\nindex_files\nreplace_pattern\nstandardize_filenames\n\nCI/CD pipeline set up\nDocumentation created with Usage\n\n\n\n\n\nAdded badge for Python Version Pull Request #45\nUpdated installation instructions in README based on Peer Suggestion Pull Request #45\nUpdated test instructions in README based on Peer Suggestion Pull Request #45\nChanged comments for test functions to docstrings Pull Request #53"
+    "text": "All notable changes to this project will be documented in this file.\n\n\n\nFirst release\nFunctions implemented:\n\nflatten\nindex_files\nreplace_pattern\nstandardize_filename\n\nCI/CD pipeline set up\nDocumentation created with Usage\n\n\n\n\n\nAdded badge for Python Version Pull Request #45\nUpdated installation instructions in README based on Peer Suggestion Pull Request #45\nUpdated test instructions in README based on Peer Suggestion Pull Request #45\nChanged comments for test functions to docstrings Pull Request #53\nAdded static inputs and outputs in the examples.qmd file Pull Request #62"
   },
   {
     "objectID": "CHANGELOG.html#section",
     "href": "CHANGELOG.html#section",
     "title": "Changelog",
     "section": "",
-    "text": "First release\nFunctions implemented:\n\nflatten\nindex_files\nreplace_pattern\nstandardize_filenames\n\nCI/CD pipeline set up\nDocumentation created with Usage"
+    "text": "First release\nFunctions implemented:\n\nflatten\nindex_files\nreplace_pattern\nstandardize_filename\n\nCI/CD pipeline set up\nDocumentation created with Usage"
   },
   {
     "objectID": "CHANGELOG.html#milestone-4-peer-review-changes-2026-02-02",
     "href": "CHANGELOG.html#milestone-4-peer-review-changes-2026-02-02",
     "title": "Changelog",
     "section": "",
-    "text": "Added badge for Python Version Pull Request #45\nUpdated installation instructions in README based on Peer Suggestion Pull Request #45\nUpdated test instructions in README based on Peer Suggestion Pull Request #45\nChanged comments for test functions to docstrings Pull Request #53"
+    "text": "Added badge for Python Version Pull Request #45\nUpdated installation instructions in README based on Peer Suggestion Pull Request #45\nUpdated test instructions in README based on Peer Suggestion Pull Request #45\nChanged comments for test functions to docstrings Pull Request #53\nAdded static inputs and outputs in the examples.qmd file Pull Request #62"
   },
   {
     "objectID": "CONTRIBUTING.html",
