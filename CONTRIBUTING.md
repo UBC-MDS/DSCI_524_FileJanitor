@@ -95,6 +95,34 @@ local development.
 7. Open the link displayed in the message when pushing your new branch in order
    to submit a pull request.
 
+
+## Development Tools & Infrastructure
+
+### Tools Used in This Project
+- **GitHub Actions**: For automated testing, coverage reports, and builds on every Pull Request
+- **Hatch**: Used for project management, dependency management and environment handling
+- **pytest + pytest-cov**: Fot testing framework with coverage tracking
+- **Semantic versioning**: This enforces clear version communication
+
+### Lessons Learned & Recommendations
+
+**What to do from the start:**
+- **Set up CI/CD immediately**: For other projects, it is recommended that the team members don't wait until later milestones. It is possible to create `.github/workflows/ci.yml` in the initial project skeleton, even before writing the code. Starting with just `pytest` running on push/PR prevents technical debt, catches bugs early, and enforces code quality since the beginning of the project.
+
+- **Create all issues at milestone start**: Before coding process begins, it could be better to hold a brief weekly planning session to create GitHub issues for every task (implementation, testing, documentation, infrastructure). One team member can label and organize the issues on the project board and everyone can pick one from the start. This could enable balanced workload distribution, prevents duplicate work, and gives team members clear visibility of the building process of the project. 
+
+### Scaling Recommendations
+
+**For medium-scale projects (10+ contributors):**
+- Use CodeCov integration for detailed coverage visualization
+- Implement Issue/PR templates with labels for structured contributions
+- Branch protection rules requiring reviews and passing tests (this was implemented since the beginning of the File Janitor project and it is a very good practice because it prevented merge conflicts).
+- Can use Issue templates that force users to provide "steps to reproduce".
+- For quality and compliance, it is recommended to use tools like Super-Linter. This can check the Python, Markdown, YAML, and other files in one go. This can be helpful to keep the repo clean, not just the code.
+
+**For production/large-scale projects:**
+- **Performance benchmarks in CI to track regressions**: The team members can implement automated performance testing in the continuous integration pipeline to monitor execution time and memory usage across different scenarios. This will help identify early performance degradation in the project and help fix issues proactively.
+
 ### Pull Request Guidelines
 
 Before you submit a pull request, check that it meets these guidelines:
