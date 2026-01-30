@@ -27,8 +27,9 @@ def index_files(dir: str, order: list[str], unlisted: str = "hide") -> bool:
     
     Returns
     -------
-    None
-        Modifies the directory in place by renaming files with numerical prefixes.
+    bool
+        True if indexing completed successfully, False otherwise.
+        Modifies the directory as the files are renamed with numerical prefixes.
     
     Raises
     ------
@@ -106,7 +107,7 @@ def index_files(dir: str, order: list[str], unlisted: str = "hide") -> bool:
         raise ValueError("The order list contains duplicate filenames")
 
     if unlisted not in ["hide", "keep"]:
-        raise ValueError("The 'unlistd' parameter must be either 'hide' or 'keep'.")
+        raise ValueError("The 'unlisted' parameter must be either 'hide' or 'keep'.")
 
     files_processed = False
 
