@@ -1,7 +1,7 @@
 # FileJanitor
 
 [![CI/CD](https://github.com/UBC-MDS/DSCI_524_FileJanitor/actions/workflows/deploy.yml/badge.svg)](https://github.com/UBC-MDS/DSCI_524_FileJanitor/actions/workflows/deploy.yml)
-[![Docs](https://github.com/UBC-MDS/DSCI_524_FileJanitor/actions/workflows/publish.yml/badge.svg)](https://ubc-mds.github.io/DSCI_524_FileJanitor/)
+[![Docs](https://github.com/UBC-MDS/DSCI_524_FileJanitor/actions/workflows/docs-publish.yml/badge.svg)](https://ubc-mds.github.io/DSCI_524_FileJanitor/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![PyPI](https://img.shields.io/pypi/v/FileJanitor?pypiBaseUrl=https%3A%2F%2Ftest.pypi.org)](https://test.pypi.org/project/FileJanitor/)
 [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
