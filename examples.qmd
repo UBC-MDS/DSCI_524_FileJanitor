@@ -10,11 +10,43 @@ replace_pattern("_", " & ", "docs/") # Renames files like: "file_janitors.txt" -
 replace_pattern("_", " ")  # Uses current directory, renames files like: "my_file.txt" -> "my file.txt"
 ```
 
+**Before:**
+```bash
+docs/
+├── file_janitors.txt
+├── report_v1_final.pdf
+└── my_file.txt
+```
+
+**After:**
+```bash
+docs/
+├── file & janitors.txt
+├── report & v1 & final.pdf
+└── my & file.txt
+```
+
 ## standardize_filename
 ```python
 from FileJanitor import standardize_filename
 
 standardize_filename("data/", case="title", sep="-") # Renames files in data/ like: "my file NAME.txt" -> "My-File-Name.txt"
+```
+
+**Before:**
+```bash
+data/
+├── my file NAME.txt
+├── Another_Report.csv
+└── messy  name--file.pdf
+```
+
+**After:**
+```bash
+data/
+├── My-File-Name.txt
+├── Another-Report.csv
+└── Messy-Name-File.pdf
 ```
 
 ## index_files
@@ -32,6 +64,7 @@ my_thesis/
 ├── conclusions.pdf
 └── analysis.pdf
 ```
+
 **After:**
 ```bash
 my_thesis/
@@ -57,11 +90,12 @@ cwd/
 │   └── processed/
 │       └── file2.csv
 ```
+
 **After:**
 ```bash
 cwd/
 ├── file1.csv
-├── file2
+├── file2.csv
 ```
 
 
