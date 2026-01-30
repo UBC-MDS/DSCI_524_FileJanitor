@@ -14,20 +14,54 @@ Install FileJanitor from [Test PyPI](https://test.pypi.org/project/filejanitor/)
 pip install -i https://test.pypi.org/simple/ filejanitor
 ```
 
-## Quick Example
-```python
+## Executable Example
+```{python}
+from pathlib import Path
+import tempfile
 from FileJanitor import standardize_filename
 
-# Standardize a messy filename
-standardize_filename("My Document (1).pdf", case="lower")
-# Returns: "my_document_1.pdf"
+# Create a temporary directory with messy filenames
+with tempfile.TemporaryDirectory() as tmp:
+    tmp_path = Path(tmp)
+
+    # Create example files
+    (tmp_path / "My Document (1).pdf").write_text("dummy")
+    (tmp_path / "Final-Report_2024.txt").write_text("dummy")
+    (tmp_path / "messy name-file.csv").write_text("dummy")
+
+    print("Before:")
+    for f in sorted(tmp_path.iterdir()):
+        print(" -", f.name)
+
+    # Standardize filenames in the directory
+    standardize_filename(tmp_path, case="lower", sep="_")
+
+    print("\nAfter:")
+    for f in sorted(tmp_path.iterdir()):
+        print(" -", f.name)
 ```
 
-## Features
+## Functions
 
-- **Flatten directories**: Bring all nested files to a single level
-- **Standardize filenames**: Clean and normalize filename formats
-- **Replace patterns**: Bulk rename files with pattern matching
-- **Index files**: Create organized file listings
+- **Flatten directories** - Bring all nested files to a single level
+- **Standardize filenames** - Clean and normalize filename formats
+- **Replace patterns** - Bulk rename files with pattern matching
+- **Index files** - Create organized file listings
 
 See the [Examples](examples.qmd) page for detailed usage.
+
+See the [Function References](reference/index.qmd) page for complete API reference.
+
+## Contributors
+
+* **Sean Brown** ([@SeanBrown12345](https://github.com/SeanBrown12345))
+* **Sam Lokanc** ([@SamLokanc](https://github.com/SamLokanc))
+* **Rabin Duran** ([@rabin0208](https://github.com/rabin0208))
+* **Luis Alonso Alvarez** ([@luisalonso8](https://github.com/luisalonso8))
+
+## Copyright
+
+- Copyright © 2026 Sean Brown, Sam Lokanc, Rabin Duran, Luis Alonso Alvarez.
+- Free software distributed under the [MIT License](./LICENSE).
+
+

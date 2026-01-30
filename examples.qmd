@@ -2,35 +2,66 @@
 title: "Usage Examples"
 ---
 
-## Standardize Filenames
-```python
-from FileJanitor import standardize_filename
-
-# Example: Clean up a messy filename
-result = standardize_filename("My Document (1).pdf", case="lower")
-print(result)
-```
-
-## Flatten Directory Structure
-```python
-from FileJanitor import flatten
-
-# Example: Flatten nested directories
-flatten("/path/to/nested/folders", "/path/to/output")
-```
-
-## Replace Patterns in Filenames
+## replace_pattern
 ```python
 from FileJanitor import replace_pattern
 
-# Example: Replace spaces with underscores
-replace_pattern("/path/to/files", " ", "_")
+replace_pattern("_", " & ", "docs/") # Renames files like: "file_janitors.txt" -> "file & janitors.txt"
+replace_pattern("_", " ")  # Uses current directory, renames files like: "my_file.txt" -> "my file.txt"
 ```
 
-## Index Files
+## standardize_filename
+```python
+from FileJanitor import standardize_filename
+
+standardize_filename("data/", case="title", sep="-") # Renames files in data/ like: "my file NAME.txt" -> "My-File-Name.txt"
+```
+
+## index_files
 ```python
 from FileJanitor import index_files
 
-# Example: Create a file index
-index_files("/path/to/directory")
+index_files("my_thesis", order = ["intro.pdf", "analysis.pdf", "discussion.pdf", "conclusions.pdf"])
 ```
+
+**Before:**
+```bash
+my_thesis/
+├── discussion.pdf
+├── intro.pdf
+├── conclusions.pdf
+└── analysis.pdf
+```
+**After:**
+```bash
+my_thesis/
+├── 01_intro.pdf
+├── 02_analysis.pdf
+├── 03_discussion.pdf
+└── 04_conclusions.pdf
+```
+
+## flatten
+```python
+from FileJanitor import flatten
+
+flatten("data/", recursive=True)
+```
+
+**Before:**
+```bash
+cwd/
+├── data/
+│   ├── raw/
+│   │   └── file1.csv
+│   └── processed/
+│       └── file2.csv
+```
+**After:**
+```bash
+cwd/
+├── file1.csv
+├── file2
+```
+
+
