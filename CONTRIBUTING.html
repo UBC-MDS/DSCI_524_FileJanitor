@@ -138,8 +138,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#write-documentation" id="toc-write-documentation" class="nav-link" data-scroll-target="#write-documentation">Write Documentation</a></li>
   <li><a href="#submit-feedback" id="toc-submit-feedback" class="nav-link" data-scroll-target="#submit-feedback">Submit Feedback</a></li>
   </ul></li>
-  <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get Started!</a>
+  <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get Started!</a></li>
+  <li><a href="#development-tools-infrastructure" id="toc-development-tools-infrastructure" class="nav-link" data-scroll-target="#development-tools-infrastructure">Development Tools &amp; Infrastructure</a>
   <ul class="collapse">
+  <li><a href="#tools-used-in-this-project" id="toc-tools-used-in-this-project" class="nav-link" data-scroll-target="#tools-used-in-this-project">Tools Used in This Project</a></li>
+  <li><a href="#lessons-learned-recommendations" id="toc-lessons-learned-recommendations" class="nav-link" data-scroll-target="#lessons-learned-recommendations">Lessons Learned &amp; Recommendations</a></li>
+  <li><a href="#scaling-recommendations" id="toc-scaling-recommendations" class="nav-link" data-scroll-target="#scaling-recommendations">Scaling Recommendations</a></li>
   <li><a href="#pull-request-guidelines" id="toc-pull-request-guidelines" class="nav-link" data-scroll-target="#pull-request-guidelines">Pull Request Guidelines</a></li>
   </ul></li>
   </ul></li>
@@ -207,6 +211,30 @@ git commit -m "fix: summarize your changes"
 git push -u origin fix-name-of-your-bugfix</code></pre></li>
 <li><p>Open the link displayed in the message when pushing your new branch in order to submit a pull request.</p></li>
 </ol>
+</section>
+<section id="development-tools-infrastructure" class="level2">
+<h2 class="anchored" data-anchor-id="development-tools-infrastructure">Development Tools &amp; Infrastructure</h2>
+<section id="tools-used-in-this-project" class="level3">
+<h3 class="anchored" data-anchor-id="tools-used-in-this-project">Tools Used in This Project</h3>
+<ul>
+<li><strong>GitHub Actions</strong>: For automated testing, coverage reports, and builds on every Pull Request</li>
+<li><strong>Hatch</strong>: Used for project management, dependency management and environment handling</li>
+<li><strong>pytest + pytest-cov</strong>: Fot testing framework with coverage tracking</li>
+<li><strong>Semantic versioning</strong>: This enforces clear version communication</li>
+</ul>
+</section>
+<section id="lessons-learned-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="lessons-learned-recommendations">Lessons Learned &amp; Recommendations</h3>
+<p><strong>What to do from the start:</strong> - <strong>Set up CI/CD immediately</strong>: For other projects, it is recommended that the team members don’t wait until later milestones. It is possible to create <code>.github/workflows/ci.yml</code> in the initial project skeleton, even before writing the code. Starting with just <code>pytest</code> running on push/PR prevents technical debt, catches bugs early, and enforces code quality since the beginning of the project.</p>
+<ul>
+<li><strong>Create all issues at milestone start</strong>: Before coding process begins, it could be better to hold a brief weekly planning session to create GitHub issues for every task (implementation, testing, documentation, infrastructure). One team member can label and organize the issues on the project board and everyone can pick one from the start. This could enable balanced workload distribution, prevents duplicate work, and gives team members clear visibility of the building process of the project.</li>
+</ul>
+</section>
+<section id="scaling-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="scaling-recommendations">Scaling Recommendations</h3>
+<p><strong>For medium-scale projects (10+ contributors):</strong> - Use CodeCov integration for detailed coverage visualization - Implement Issue/PR templates with labels for structured contributions - Branch protection rules requiring reviews and passing tests (this was implemented since the beginning of the File Janitor project and it is a very good practice because it prevented merge conflicts). - Can use Issue templates that force users to provide “steps to reproduce”. - For quality and compliance, it is recommended to use tools like Super-Linter. This can check the Python, Markdown, YAML, and other files in one go. This can be helpful to keep the repo clean, not just the code.</p>
+<p><strong>For production/large-scale projects:</strong> - <strong>Performance benchmarks in CI to track regressions</strong>: The team members can implement automated performance testing in the continuous integration pipeline to monitor execution time and memory usage across different scenarios. This will help identify early performance degradation in the project and help fix issues proactively.</p>
+</section>
 <section id="pull-request-guidelines" class="level3">
 <h3 class="anchored" data-anchor-id="pull-request-guidelines">Pull Request Guidelines</h3>
 <p>Before you submit a pull request, check that it meets these guidelines:</p>
