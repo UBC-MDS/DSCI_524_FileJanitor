@@ -7,13 +7,15 @@
 [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 [![codecov](https://codecov.io/gh/UBC-MDS/DSCI_524_FileJanitor/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/DSCI_524_FileJanitor)
 
-## Summary
+## About / Summary
 
-FileJanitor is a package that cleans, standardizes, and organizes file names and folder structures.
+FileJanitor is a package that cleans, standardizes, and organizes file names and folder structures. Its goal is to automate common file system tasks, so the user can keep their documents tidy.
 
-## Overview usage
+## Overview 
 
-FileJanitor provides a set of utility functions to automate common-file system housekeeping tasks, such as renaming files, standardizing name conventions, ordering files, and restructuring directories. All functions operate on all files in a specialized folder unless specified.
+FileJanitor provides a set of utility functions to automate common file system tasks, such as renaming files, standardizing name conventions, ordering files, and restructuring directories. All functions operate on all files in a specialized folder unless specified.
+
+FileJanitor is a high-level package built on top of libraries such as ```os```, ```pathlib```, and ```shutil```. While many Python libraries provide low-level tools for working with files, they do not offer built in functions for tasks such as standardizing file names, reordering files, and flattening directory structures. This package abstracts these low level capabilities into simple and reusable functions.
 
 Check deployment at: https://test.pypi.org/project/FileJanitor/
 
@@ -22,7 +24,7 @@ Check deployment at: https://test.pypi.org/project/FileJanitor/
 ### From PyPI (recommended)
 Run in your terminal to install FileJanitor package:
 ```bash
-pip install -i https://test.pypi.org/simple/ travelpy
+pip install -i https://test.pypi.org/simple/ FileJanitor
 ```
 
 ## Functions and Examples
@@ -64,7 +66,7 @@ from FileJanitor import standardize_filename
 
 standardize_filename("data/", case="title", sep="-") # Renames files in data/ like: "my file NAME.txt" -> "My-File-Name.txt"
 ```
-### Function 3. index_files(dir, order, unlisted) 
+### Function 3: index_files(dir, order, unlisted) 
 This function orders the files in each folder according to a defined order.
 
 | Parameter | Type | Description |
@@ -96,7 +98,7 @@ my_thesis/
 └── 04_conclusions.pdf
 ```
 
-### Function 4. flatten(nested_directory, output_directory, recursive) 
+### Function 4: flatten(nested_directory, output_directory, recursive) 
 This function will move all files from nested subfolders into a single target directory. 
 - By default, only files directly inside 'nested_directory' are moved.
 - If 'recursive' is True, files from all nested subdirectories are also moved.
@@ -126,7 +128,7 @@ cwd/
 ```bash
 cwd/
 ├── file1.csv
-├── file2
+├── file2.csv
 ```
 
 ## Testing
@@ -188,10 +190,6 @@ Documentation is **automatically deployed** to GitHub Pages when changes are mer
 4. GitHub Actions runs `.github/workflows/publish.yml`
 5. The documentation is built and deployed to the `gh-pages` branch
 6. The changes are at https://ubc-mds.github.io/DSCI_524_FileJanitor/
-
-## Similar Packages
-
-FileJanitor is a high-level package built on top of libraries such as ```os```, ```pathlib```, and ```shutil```. While many Python libraries provide low-level tools for working with files, they do not offer built in functions for tasks such as standardizing file names, reordering files, and flattening directory structures. FileJanitor abstracts these low level capabilities into a simple Python Package that allows users to perform common cleanup tasks with ease.
 
 ## Contributors
 
