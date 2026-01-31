@@ -191,12 +191,25 @@ Documentation is **automatically deployed** to GitHub Pages when changes are mer
 5. The documentation is built and deployed to the `gh-pages` branch
 6. The changes are at https://ubc-mds.github.io/DSCI_524_FileJanitor/
 
+## Citation
+
+If you use FileJanitor in your work, please cite it as:
+```bibtex
+@software{filejanitor,
+  title={FileJanitor: A Python package for cleaning and organizing file systems},
+  author={Brown, Sean and Lokanc, Sam and Duran, Rabin and Alvarez, Luis Alonso},
+  year={2026},
+  url={https://github.com/UBC-MDS/DSCI_524_FileJanitor}
+}
+```
+
 ## Contributors
 
 * **Sean Brown** ([@SeanBrown12345](https://github.com/SeanBrown12345))
 * **Sam Lokanc** ([@SamLokanc](https://github.com/SamLokanc))
 * **Rabin Duran** ([@rabin0208](https://github.com/rabin0208))
 * **Luis Alonso Alvarez** ([@luisalonso8](https://github.com/luisalonso8))
+
 
 ## Copyright
 
