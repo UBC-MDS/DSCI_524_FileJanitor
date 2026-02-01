@@ -17,6 +17,7 @@ All notable changes to this project will be documented in this file.
 - Updated installation instructions in README based on Peer Suggestion [Pull Request #45](https://github.com/UBC-MDS/DSCI_524_FileJanitor/pull/45)
 - Updated test instructions in README based on Peer Suggestion [Pull Request #45](https://github.com/UBC-MDS/DSCI_524_FileJanitor/pull/45)
 - Changed comments for test functions to docstrings [Pull Request #53](https://github.com/UBC-MDS/DSCI_524_FileJanitor/pull/53)
+- Added static inputs and outputs in the `examples.qmd` file [Pull Request #62](https://github.com/UBC-MDS/DSCI_524_FileJanitor/pull/62)
 - Improved README readability: fixed install command (`travelpy` → `FileJanitor`), renamed "Overview usage" to "Overview", standardized function headings, fixed `file2.csv` in flatten example [Pull Request #63](https://github.com/UBC-MDS/DSCI_524_FileJanitor/pull/63)
 - Moved "Similar Packages" content into Overview section and removed redundant standalone section [Pull Request #63](https://github.com/UBC-MDS/DSCI_524_FileJanitor/pull/63)
 - Expanded "Summary" section to "About / Summary" with package description [Pull Request #63](https://github.com/UBC-MDS/DSCI_524_FileJanitor/pull/63)
